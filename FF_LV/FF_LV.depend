@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1694881386 source:c:\users\setupgme\onedrive\documents\projet_exploitation\first_fit\gestion_de_processus_2.0\ff_lv\main.c
+	<stdio.h>
+	<stdlib.h>
+
