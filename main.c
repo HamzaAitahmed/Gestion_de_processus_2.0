@@ -56,28 +56,6 @@ node *head = NULL , *fl = NULL , *lsd = NULL ; /// Des Variables Globales
 
 enum ListType { FL, LH, LD } ;
 
-node *add(char Type[])   /// cree un block
-{
-    node  *temp1, *n = (node*)malloc( sizeof(node) );
-
-    n->type = 'F';
-    n->next = NULL;
-
-    if(fl == NULL)
-    {
-        fl = n;
-        return n;
-    }
-
-    while(temp1->next != NULL)
-    {
-        temp1 = temp1->next ;
-    }
-    temp1->next = n;
-
-    return n;
-}
-
 node *addhead() /// cree un block dans la memoire        pour un processus ( pour l'execution )
 {
     node *n = (node*)malloc( sizeof(node) );
@@ -464,7 +442,7 @@ int BestPosition(int taille)
 
 int WorstPosition(int taille)
 {
-    int  i , pos , jpos  , max ;
+    int  i , pos  , max ;
     node *temp = head;
 
     for(i=1 , pos=0 , max=0 ; temp!=NULL  ; i++)
@@ -579,7 +557,7 @@ void MB_TO_MMLB(node *Current_RL, node *Previous_RL, node *Current_SL, node *Pre
 
 node *pointingLastBlock(enum ListType type)
 {
-    node *temp ;
+    node *temp = NULL ;
 
     if(type==LH)
         temp = head;
@@ -588,8 +566,13 @@ node *pointingLastBlock(enum ListType type)
     if(type==FL)
         temp = fl;
 
-    while(temp->next != NULL) // pointer sur le derniere block ( parce que il est libre )
-        temp = temp->next;
+    if(temp!=NULL)
+    {
+        while(temp->next != NULL) // pointer sur le derniere block ( parce que il est libre )
+            {
+                temp = temp->next;
+            }
+    }
 
     return temp;
 }
@@ -1176,7 +1159,6 @@ void BestFit(int dtvmax)
 }
 
 
-
 void WorstFit(int dtvmax)
 {
     int  i, t, pos , jhead , jfl , cpt_total  ;
@@ -1197,10 +1179,8 @@ void WorstFit(int dtvmax)
 
                 pos = WorstPosition(Current_LSD->taille);
 
-                if(fl==NULL)
+                if(fl==NULL) // si nous avons un processus qui va libérer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivée et l'autre dans la file d'attente, donc ici la priorité pour la file d'attente
                 {
-                    //printf("La Ligne 202 \n");
-                    //while(Current_Head!=NULL && jhead==0) //  chercher une place dans La memoir libre
                     for(i=1 ; Current_Head!=NULL && jhead==0 && pos!=0 ; i++)
                     {
                         if(i==pos)
@@ -1334,7 +1314,8 @@ void WorstFit(int dtvmax)
 
             jfl=0;
 
-            pos = WorstPosition(Current_Head->taille); // ??????????????????????????????????
+            pos = WorstPosition(Current_FL->taille);
+
 
             //while(Current_Head!=NULL && jfl==0)
             for( i=1 ; Current_Head!=NULL && jfl==0 && pos!=0 ; i++ )
@@ -1402,9 +1383,9 @@ void WorstFit(int dtvmax)
                         Previous_Head=Current_Head;
                         Current_Head = Current_Head->next;
                     }
-                    if(cpt_total <= Current_LSD->cpt) // pour augmenter Le temps d'execution total
+                    if(cpt_total <= Current_FL->cpt) // pour augmenter Le temps d'execution total
                     {
-                        cpt_total = Current_LSD->cpt+1;
+                        cpt_total = Current_FL->cpt+1;
                     }
                     if(Current_FL==Previous_FL)
                     {
@@ -1457,6 +1438,7 @@ void WorstFit(int dtvmax)
 }
 
 
+
 int main()
 {
     head = (node *)malloc(sizeof(node) );
@@ -1477,7 +1459,7 @@ int main()
 
 
     //firstfit(x);
-
-    BestFit(x);
+    //BestFit(x);
+    WorstFit(x);
     return 0;
 }
