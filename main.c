@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-                        	// Hamza AitAhmed
-				// 2APG4 EMSI Orangers , Casablanca , Maroc
-				// 2022/2021
+                                // Hamza AitAhmed
+                                // 2APG4 EMSI Orangers , Casablanca , Maroc
+                                // 2022/2021
 
 
 typedef struct node
@@ -90,15 +90,8 @@ void afficherCompactage(char message[])
             printf(" --------------- \n");
             if(temp1->cpt==0) // liberer un processus
             {
-                //printf("|\t%d\t|\n",temp1->taille);
-                //printf(" --------------- \n");
                 temp1->type = 'L';
             }
-            /*else
-            {
-                printf("|\tP%d\t|\n",temp1->nbr);
-                printf(" --------------- \n");
-            }*/
         }
         else
         {
@@ -107,10 +100,10 @@ void afficherCompactage(char message[])
             printf(" --------------- \n");
         }
         temp1 = temp1->next ;
-    } // nadiii 10/10
+    }
 }
 
-void compactage()  /// naaaaadi  10/10
+void compactage()
 {
     int taille=0;
     node *Current , *Previous ;
@@ -164,6 +157,9 @@ void compactage()  /// naaaaadi  10/10
         }
     }
 
+    //afficherCompactage("Apres");
+
+
 }
 
 void afficherHead()
@@ -183,15 +179,8 @@ void afficherHead()
             printf(" --------------- \n");
             if(temp1->cpt==0) // liberer un processus
             {
-                //printf("|\t%d\t|\n",temp1->taille);
-                //printf(" --------------- \n");
                 temp1->type = 'L';
             }
-            /*else
-            {
-                printf("|\tP%d\t|\n",temp1->nbr);
-                printf(" --------------- \n");
-            }*/
         }
         else
         {
@@ -200,7 +189,7 @@ void afficherHead()
             printf(" --------------- \n");
         }
         temp1 = temp1->next ;
-    } // nadiii 10/10
+    }
 }
 
 void afficherFL()
@@ -218,7 +207,6 @@ void afficherFL()
             printf(" --------------- \n");
             temp1 = temp1->next ;
         }
-        //printf("\n");
     }
 }
 
@@ -241,7 +229,7 @@ void afficherLSD()
     }
 }
 
-void afficher(int t) /// naaaaadi  10/10
+void afficher(int t)
 {
     printf("\n____________________________________________________________________________________________________________\n");
     printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
@@ -298,26 +286,28 @@ int calculerTailleTotalBlockLibre()
 
 int saisieLesProcessusDansLaListe(int nbrProcessus)
 {
-    int  ordre , taille_Processus , temps_exe_Pr , date_arr_Pr , taille_max , dtvmax;
+    int  ordre , taille_Processus , temps_exe_Pr , date_arr_Pr , taille_max , dtvmax, status;
     node  *temp;
 
     printf("\n\n --------------- \n");
     printf("|\t%d\t|\n",head->taille);
     printf(" --------------- \n ");
 
-/*
+    taille_max=head->taille;
+
     for(ordre=1 , dtvmax=0 ; ordre<nbrProcessus+1 ; ordre++)
     {
-        taille_max=head->taille;
         do
         {
+            status=0;
             printf("\tentrer La taille du P%d : ",ordre);
             scanf("%d",&taille_Processus);
             if(taille_max < taille_Processus || taille_Processus <= 0)
             {
                 printf("\n\tERROR ( La Taille Du Processus Est Inferieur A 1 ou bien est Superieur A La Taille De La Memoire %d > %d) \n\n",taille_Processus,taille_max);
                 ordre--;
-                continue;
+                status=1;
+                break;
             }
 
             printf("\tentrer Le temps d'execu du P%d : ",ordre);
@@ -326,7 +316,8 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
             {
                 printf("\n\tERROR ( Le temps d'execution est Inferieure ou Egale a 0 ( %d <= 0 ) \n\n",temps_exe_Pr);
                 ordre--;
-                continue;
+                status=1;
+                break;
             }
 
             printf("\tentrer La Date D'arrivee du P%d : ",ordre);
@@ -335,7 +326,8 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
             {
                 printf("\n\tERROR ( La Date D'arrivee est Inferieure a 0 ( %d < 0 ) \n\n",date_arr_Pr);
                 ordre--;
-                continue;
+                status=1;
+                break;
             }
 
             if(dtvmax<=date_arr_Pr)
@@ -345,24 +337,20 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
 
         }while(taille_max < taille_Processus || temps_exe_Pr < 0 || date_arr_Pr < 0 );
 
-        temp = addlsd();
-        temp->taille = taille_Processus;
-        temp->cpt    = temps_exe_Pr;
-        temp->dtv    = date_arr_Pr;
-        temp->nbr    = ordre;
-    }
-    return dtvmax;
+        if(status!=1)
+        {
+            temp = addlsd();
+            temp->taille = taille_Processus;
+            temp->cpt    = temps_exe_Pr;
+            temp->dtv    = date_arr_Pr;
+            temp->nbr    = ordre;
+        }
 
-     Pour testet un cas exceptionnel et le repeter
-*/
-        temp = addlsd(); temp->taille = 100;    temp->cpt    = 3;   temp->dtv    = 2;   temp->nbr    = 1;
-        temp = addlsd(); temp->taille = 180;    temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 2;
-        temp = addlsd(); temp->taille = 10;     temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 3;
-        temp = addlsd(); temp->taille = 80;     temp->cpt    = 5;   temp->dtv    = 1;   temp->nbr    = 4;
-        temp = addlsd(); temp->taille = 15;     temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 5;
-        temp = addlsd(); temp->taille = 15;     temp->cpt    = 3;   temp->dtv    = 3;   temp->nbr    = 6;
+    }
+
     afficherLSD();
-    return 3;
+
+    return dtvmax;
 
 }
 
@@ -399,7 +387,6 @@ int BestPosition(int taille)
         }
         temp = temp->next;
     }
-    //printf("\n ===> Current_FL taille : %d ===> pos : %d \n", taille,pos);
 
     return pos;
 }
@@ -432,6 +419,7 @@ int WorstPosition(int taille)
     return pos;
 
 }
+
 void FB_TO_MFB(node *Current_RL, node *Current_SL, enum ListType Sender_Liste) // First Block To First Block ( ajouter le processus dans le premier block de la memoire )
 {
     if(Sender_Liste==LD)
@@ -541,7 +529,7 @@ node *pointingLastBlock(enum ListType type)
     return temp;
 }
 
-void firstfit(int dtvmax)
+void FirstFit(int dtvmax)
 {
     int  t, jhead, jfl, cpt_total;
     node *Current_Head, *Previous_Head, *Current_FL, *Previous_FL, *Current_LSD, *Previous_LSD;
@@ -1407,39 +1395,40 @@ int main()
 {
     head = (node *)malloc(sizeof(node) );
 
-    int nbrProcessus;
-    int x;
+    int nbrProcessus, algo_choisi, date_arrivee_max;
     printf("entrer La taille total de La memoire : ");
-    scanf("%d",&head->taille);
+    scanf("%d", &head->taille);
     printf("entrer le nombre des processus : ");
-    scanf("%d",&nbrProcessus);
-    
+    scanf("%d", &nbrProcessus);
+
     head->next = NULL;
     head->type = 'L';
 
-    x = saisieLesProcessusDansLaListe(nbrProcessus); // return date arrivee max
+
+    date_arrivee_max = saisieLesProcessusDansLaListe(nbrProcessus); // return date arrivee max
 
     do
     {
-        printf(" 1 -> FirstFit \n 2 -> BestFit \n 3 -> WorstFit \n");
+        printf("Choisissez un Algo : \n 1 -> FirstFit \n 2 -> BestFit \n 3 -> WorstFit \n");
         printf("Entrer L'algorithme : " );
-        scanf("%d",&i);
+        scanf("%d",&algo_choisi);
         printf("\n\n");
-    }while(i<1 || i>3);
+    }while(algo_choisi<1 || algo_choisi>3);
 
-    switch(i)
+
+    switch(algo_choisi)
     {
         case 1:
             printf(" ### Vous Avez Choisis FirstFit ### \n\n");
-            FirstFit(x);
+            FirstFit(date_arrivee_max);
             break;
         case 2:
             printf(" ### Vous Avez Choisis BestFit ### \n\n");
-            BestFit(x);
+            BestFit(date_arrivee_max);
             break;
         case 3:
             printf(" ### Vous Avez Choisis WorstFit ### \n\n");
-            WorstFit(x);
+            WorstFit(date_arrivee_max);
             break;
     }
 
@@ -1468,4 +1457,42 @@ int main()
         entrer Le temps d'execu du P4 : 3
         entrer La Date D'arrivee du P4 : 0
 
+*/
+
+/*
+        entrer La taille total de La memoire : 100
+        entrer le nombre des processus : 5
+
+        entrer La taille du P1 : -1
+
+        ERROR ( La Taille Du Processus Est Inferieur A 1 ou bien est Superieur A La Taille De La Memoire -1 > 100)
+
+        entrer La taille du P1 : 10
+        entrer Le temps d'execu du P1 : 5
+        entrer La Date D'arrivee du P1 : 0
+
+
+        entrer La taille du P2 : 90
+        entrer Le temps d'execu du P2 : 0
+
+        ERROR ( Le temps d'execution est Inferieure ou Egale a 0 ( 0 <= 0 )
+
+        entrer La taille du P2 : 90
+        entrer Le temps d'execu du P2 : 4
+        entrer La Date D'arrivee du P2 : 0
+
+
+        entrer La taille du P3 : 87
+        entrer Le temps d'execu du P3 : 3
+        entrer La Date D'arrivee du P3 : 0
+
+
+        entrer La taille du P4 : 6
+        entrer Le temps d'execu du P4 : 2
+        entrer La Date D'arrivee du P4 : 0
+
+
+        entrer La taille du P5 : 65
+        entrer Le temps d'execu du P5 : 3
+        entrer La Date D'arrivee du P5 : 0
 */
