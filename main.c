@@ -1,46 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    ----------------------------------------------  Les Objectifs qui reste ------------------------------------------------------
+                        	// Hamza AitAhmed
+				// 2APG4 EMSI Orangers , Casablanca , Maroc
+				// 2022/2021
 
-    • décrémenter tous les processus qui sont dans la memoire ( cpt )     ######################################## 10/10  ( easy )
-
-    • ajouter une variable ( nbr ) de type int dans la structure node pour connaître le numéro du processus   #### 10/10  ( easy )
-
-    • liberer un processus dans la memoire     ################################################################### 10/10  ( easy )
-
-    • cpt_total     ############################################################################################## 10/10  ( moyen )
-
-    • prendre un processus dans la file d'attente et l'ajouter dans la memoire     ############################### 07/10  ( Hard )
-
-    • Probleme Dans La Fil D'attete cpt_total et nbr du processus                  ############################### 00/10  ( Hard )
-
-*/
-
-/*
-
-
-        entrer La taille du P1 : 100
-        entrer Le temps d'execu du P1 : 3
-        entrer La Date D'arrivee du P1 : 2
-
-
-        entrer La taille du P2 : 10
-        entrer Le temps d'execu du P2 : 3
-        entrer La Date D'arrivee du P2 : 0
-
-
-        entrer La taille du P3 : 80
-        entrer Le temps d'execu du P3 : 3
-        entrer La Date D'arrivee du P3 : 1
-
-
-        entrer La taille du P4 : 15
-        entrer Le temps d'execu du P4 : 3
-        entrer La Date D'arrivee du P4 : 0
-
-*/
 
 typedef struct node
 {
@@ -1445,21 +1409,63 @@ int main()
 
     int nbrProcessus;
     int x;
-    //printf("entrer La taille total de La memoire : ");
-    //scanf("%d",&head->taille);
-    //printf("entrer le nombre des processus : ");
-    //scanf("%d",&nbrProcessus);
-    head->taille = 180;
-    nbrProcessus = 6;
-
+    printf("entrer La taille total de La memoire : ");
+    scanf("%d",&head->taille);
+    printf("entrer le nombre des processus : ");
+    scanf("%d",&nbrProcessus);
+    
     head->next = NULL;
     head->type = 'L';
 
-    x = saisieLesProcessusDansLaListe(nbrProcessus); // return dtv max
+    x = saisieLesProcessusDansLaListe(nbrProcessus); // return date arrivee max
 
+    do
+    {
+        printf(" 1 -> FirstFit \n 2 -> BestFit \n 3 -> WorstFit \n");
+        printf("Entrer L'algorithme : " );
+        scanf("%d",&i);
+        printf("\n\n");
+    }while(i<1 || i>3);
 
-    //firstfit(x);
-    //BestFit(x);
-    WorstFit(x);
+    switch(i)
+    {
+        case 1:
+            printf(" ### Vous Avez Choisis FirstFit ### \n\n");
+            FirstFit(x);
+            break;
+        case 2:
+            printf(" ### Vous Avez Choisis BestFit ### \n\n");
+            BestFit(x);
+            break;
+        case 3:
+            printf(" ### Vous Avez Choisis WorstFit ### \n\n");
+            WorstFit(x);
+            break;
+    }
+
     return 0;
 }
+
+/*
+
+
+        entrer La taille du P1 : 100
+        entrer Le temps d'execu du P1 : 3
+        entrer La Date D'arrivee du P1 : 2
+
+
+        entrer La taille du P2 : 10
+        entrer Le temps d'execu du P2 : 3
+        entrer La Date D'arrivee du P2 : 0
+
+
+        entrer La taille du P3 : 80
+        entrer Le temps d'execu du P3 : 3
+        entrer La Date D'arrivee du P3 : 1
+
+
+        entrer La taille du P4 : 15
+        entrer Le temps d'execu du P4 : 3
+        entrer La Date D'arrivee du P4 : 0
+
+*/
