@@ -1,46 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    ----------------------------------------------  Les Objectifs qui reste ------------------------------------------------------
+                        	// Hamza AitAhmed
+				// 2APG4 EMSI Orangers , Casablanca , Maroc
+				// 2022/2021
 
-    • décrémenter tous les processus qui sont dans la memoire ( cpt )     ######################################## 10/10  ( easy )
-
-    • ajouter une variable ( nbr ) de type int dans la structure node pour connaître le numéro du processus   #### 10/10  ( easy )
-
-    • liberer un processus dans la memoire     ################################################################### 10/10  ( easy )
-
-    • cpt_total     ############################################################################################## 10/10  ( moyen )
-
-    • prendre un processus dans la file d'attente et l'ajouter dans la memoire     ############################### 07/10  ( Hard )
-
-    • Probleme Dans La Fil D'attete cpt_total et nbr du processus                  ############################### 00/10  ( Hard )
-
-*/
-
-/*
-
-
-        entrer La taille du P1 : 100
-        entrer Le temps d'execu du P1 : 3
-        entrer La Date D'arrivee du P1 : 2
-
-
-        entrer La taille du P2 : 10
-        entrer Le temps d'execu du P2 : 3
-        entrer La Date D'arrivee du P2 : 0
-
-
-        entrer La taille du P3 : 80
-        entrer Le temps d'execu du P3 : 3
-        entrer La Date D'arrivee du P3 : 1
-
-
-        entrer La taille du P4 : 15
-        entrer Le temps d'execu du P4 : 3
-        entrer La Date D'arrivee du P4 : 0
-
-*/
 
 typedef struct node
 {
@@ -115,7 +79,7 @@ void afficherCompactage(char message[])
     printf("//////////////////////////////////////////////////////////\n   /////////////////////  Compactage %s  /////////////////\n      //////////////////////////////////////////////////////////\n",message);
     temp1 = head;
     printf(" --------------- \n");
-    while(temp1 != NULL) /// décrémenter le temps d'execution des processus
+    while(temp1 != NULL) /// dï¿½crï¿½menter le temps d'execution des processus
     {
         if(temp1->type == 'O')
         {
@@ -151,7 +115,7 @@ void compactage()  /// naaaaadi  10/10
     int taille=0;
     node *Current , *Previous ;
 
-    node *n = (node *)malloc(sizeof(node) ); // créer un block pour remplacer tous les zones libres dans un seul block qui est n
+    node *n = (node *)malloc(sizeof(node) ); // crï¿½er un block pour remplacer tous les zones libres dans un seul block qui est n
 
     n->next = NULL;
     n->type = 'L';
@@ -162,7 +126,7 @@ void compactage()  /// naaaaadi  10/10
     Previous = Current;
     if(Current->next != NULL)
     {
-        while(Current != NULL) // pour éliminer les blocs des zones libres et les remplacer tous dans un seul block
+        while(Current != NULL) // pour ï¿½liminer les blocs des zones libres et les remplacer tous dans un seul block
         {
             if(Current->type == 'L')
             {
@@ -196,7 +160,7 @@ void compactage()  /// naaaaadi  10/10
         else
         {
             Previous->next = n;
-            n->taille = taille; // après avoir supprimer les zones libres et compter leur taille
+            n->taille = taille; // aprï¿½s avoir supprimer les zones libres et compter leur taille
         }
     }
 
@@ -208,7 +172,7 @@ void afficherHead()
 
     temp1 = head;
     printf(" --------------- \n");
-    while(temp1 != NULL) /// décrémenter le temps d'execution des processus
+    while(temp1 != NULL) /// dï¿½crï¿½menter le temps d'execution des processus
     {
         if(temp1->type == 'O')
         {
@@ -247,7 +211,7 @@ void afficherFL()
     if(fl!=NULL)
     {
         printf("\n FILE D'ATTENTE : \n ^^^^^^^^^^^^^^ \n --------------- \n");
-        while(temp1 != NULL) // décrémenter le temps d'execution des processus
+        while(temp1 != NULL) // dï¿½crï¿½menter le temps d'execution des processus
         {
             printf("|\tP%d\t|    ->\ttaille : %d\t-> cpt : %ds\t-> dtv : %ds\t-> type : %c", temp1->nbr , temp1->taille , temp1->cpt , temp1->dtv , temp1->type);
             if(temp1->next!=NULL) printf("\t-> next->taille : %d\n",temp1->next->taille); else printf("\n");
@@ -266,7 +230,7 @@ void afficherLSD()
     if(lsd!=NULL)
     {
         printf("\n LISTE D'ARRIVEE : \n\n --------------- \n");
-        while(temp1 != NULL) // décrémenter le temps d'execution des processus
+        while(temp1 != NULL) // dï¿½crï¿½menter le temps d'execution des processus
         {
             printf("|\tP%d\t|    ->\ttaille : %d\t-> cpt : %ds\t-> dtv : %ds\t-> type : %c", temp1->nbr , temp1->taille , temp1->cpt , temp1->dtv , temp1->type);
             if(temp1->next!=NULL) printf("\t-> next->taille : %d\n",temp1->next->taille); else printf("\n");
@@ -320,7 +284,7 @@ int calculerTailleTotalBlockLibre()
                 return head->taille;
             }
         }
-        while(temp != NULL) // décrémenter le temps d'execution des processus
+        while(temp != NULL) // dï¿½crï¿½menter le temps d'execution des processus
         {
             if(temp->type=='L')
             {
@@ -341,7 +305,7 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
     printf("|\t%d\t|\n",head->taille);
     printf(" --------------- \n ");
 
-/*
+
     for(ordre=1 , dtvmax=0 ; ordre<nbrProcessus+1 ; ordre++)
     {
         taille_max=head->taille;
@@ -387,18 +351,10 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
         temp->dtv    = date_arr_Pr;
         temp->nbr    = ordre;
     }
-    return dtvmax;
 
-     Pour testet un cas exceptionnel et le repeter
-*/
-        temp = addlsd(); temp->taille = 100;    temp->cpt    = 3;   temp->dtv    = 2;   temp->nbr    = 1;
-        temp = addlsd(); temp->taille = 180;    temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 2;
-        temp = addlsd(); temp->taille = 10;     temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 3;
-        temp = addlsd(); temp->taille = 80;     temp->cpt    = 5;   temp->dtv    = 1;   temp->nbr    = 4;
-        temp = addlsd(); temp->taille = 15;     temp->cpt    = 3;   temp->dtv    = 0;   temp->nbr    = 5;
-        temp = addlsd(); temp->taille = 15;     temp->cpt    = 3;   temp->dtv    = 3;   temp->nbr    = 6;
     afficherLSD();
-    return 3;
+
+    return dtvmax;
 
 }
 
@@ -435,7 +391,6 @@ int BestPosition(int taille)
         }
         temp = temp->next;
     }
-    //printf("\n ===> Current_FL taille : %d ===> pos : %d \n", taille,pos);
 
     return pos;
 }
@@ -468,6 +423,7 @@ int WorstPosition(int taille)
     return pos;
 
 }
+
 void FB_TO_MFB(node *Current_RL, node *Current_SL, enum ListType Sender_Liste) // First Block To First Block ( ajouter le processus dans le premier block de la memoire )
 {
     if(Sender_Liste==LD)
@@ -588,7 +544,7 @@ void firstfit(int dtvmax)
         /*
                 #########################################################################################################################
 
-            #############  Ajouter Les Processus De Liste D'Arrivee à La Memoire  ###################################################
+            #############  Ajouter Les Processus De Liste D'Arrivee ï¿½ La Memoire  ###################################################
 
         #########################################################################################################################
 
@@ -604,7 +560,7 @@ void firstfit(int dtvmax)
                 Previous_Head = Current_Head;
 
                 jhead=0;
-                if(fl==NULL)  // si nous avons un processus qui va libérer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivée et l'autre dans la file d'attente, donc ici la priorité pour la file d'attente
+                if(fl==NULL)  // si nous avons un processus qui va libï¿½rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivï¿½e et l'autre dans la file d'attente, donc ici la prioritï¿½ pour la file d'attente
                 {
                     while(Current_Head!=NULL && jhead==0) //  chercher une place dans La memoir libre
                     {
@@ -755,7 +711,7 @@ void firstfit(int dtvmax)
                 if(Current_Head->type == 'L')
                 {
                     // Calculer la taille totale de tous les blocs libres lorsque nous recherchons la taille du processus
-                    // si nous n'avons pas trouvé la taille du processus qu'on cherche on passe au compactage et on verifier s'il est possible ( taille_total <= Current_FL->taille )
+                    // si nous n'avons pas trouvï¿½ la taille du processus qu'on cherche on passe au compactage et on verifier s'il est possible ( taille_total <= Current_FL->taille )
 
                     if(Current_FL->taille <= Current_Head->taille)
                     {
@@ -900,7 +856,7 @@ void BestFit(int dtvmax)
 
                 pos = BestPosition(Current_LSD->taille);
 
-                if(fl==NULL) // si nous avons un processus qui va libérer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivée et l'autre dans la file d'attente, donc ici la priorité pour la file d'attente
+                if(fl==NULL) // si nous avons un processus qui va libï¿½rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivï¿½e et l'autre dans la file d'attente, donc ici la prioritï¿½ pour la file d'attente
                 {
                     for(i=1 ; Current_Head!=NULL && jhead==0 && pos!=0 ; i++)
                     {
@@ -1179,7 +1135,7 @@ void WorstFit(int dtvmax)
 
                 pos = WorstPosition(Current_LSD->taille);
 
-                if(fl==NULL) // si nous avons un processus qui va libérer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivée et l'autre dans la file d'attente, donc ici la priorité pour la file d'attente
+                if(fl==NULL) // si nous avons un processus qui va libï¿½rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivï¿½e et l'autre dans la file d'attente, donc ici la prioritï¿½ pour la file d'attente
                 {
                     for(i=1 ; Current_Head!=NULL && jhead==0 && pos!=0 ; i++)
                     {
@@ -1444,22 +1400,64 @@ int main()
     head = (node *)malloc(sizeof(node) );
 
     int nbrProcessus;
-    int x;
-    //printf("entrer La taille total de La memoire : ");
-    //scanf("%d",&head->taille);
-    //printf("entrer le nombre des processus : ");
-    //scanf("%d",&nbrProcessus);
-    head->taille = 180;
-    nbrProcessus = 6;
-
+    int date_arrivee_max;
+    printf("entrer La taille total de La memoire : ");
+    scanf("%d",&head->taille);
+    printf("entrer le nombre des processus : ");
+    scanf("%d",&nbrProcessus);
+    
     head->next = NULL;
     head->type = 'L';
 
-    x = saisieLesProcessusDansLaListe(nbrProcessus); // return dtv max
+    date_arrivee_max = saisieLesProcessusDansLaListe(nbrProcessus); // return date arrivee max
 
+    do
+    {
+        printf(" 1 -> FirstFit \n 2 -> BestFit \n 3 -> WorstFit \n");
+        printf("Entrer L'algorithme : " );
+        scanf("%d",&i);
+        printf("\n\n");
+    }while(i<1 || i>3);
 
-    //firstfit(x);
-    //BestFit(x);
-    WorstFit(x);
+    switch(i)
+    {
+        case 1:
+            printf(" ### Vous Avez Choisis FirstFit ### \n\n");
+            FirstFit(date_arrivee_max);
+            break;
+        case 2:
+            printf(" ### Vous Avez Choisis BestFit ### \n\n");
+            BestFit(date_arrivee_max);
+            break;
+        case 3:
+            printf(" ### Vous Avez Choisis WorstFit ### \n\n");
+            WorstFit(date_arrivee_max);
+            break;
+    }
+
     return 0;
 }
+
+/*
+
+
+        entrer La taille du P1 : 100
+        entrer Le temps d'execu du P1 : 3
+        entrer La Date D'arrivee du P1 : 2
+
+
+        entrer La taille du P2 : 10
+        entrer Le temps d'execu du P2 : 3
+        entrer La Date D'arrivee du P2 : 0
+
+
+        entrer La taille du P3 : 80
+        entrer Le temps d'execu du P3 : 3
+        entrer La Date D'arrivee du P3 : 1
+
+
+        entrer La taille du P4 : 15
+        entrer Le temps d'execu du P4 : 3
+        entrer La Date D'arrivee du P4 : 0
+
+*/
