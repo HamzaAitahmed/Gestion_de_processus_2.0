@@ -79,7 +79,7 @@ void afficherCompactage(char message[])
     printf("//////////////////////////////////////////////////////////\n   /////////////////////  Compactage %s  /////////////////\n      //////////////////////////////////////////////////////////\n",message);
     temp1 = head;
     printf(" --------------- \n");
-    while(temp1 != NULL) /// d�cr�menter le temps d'execution des processus
+    while(temp1 != NULL) /// decrementer le temps d'execution des processus
     {
         if(temp1->type == 'O')
         {
@@ -115,7 +115,7 @@ void compactage()  /// naaaaadi  10/10
     int taille=0;
     node *Current , *Previous ;
 
-    node *n = (node *)malloc(sizeof(node) ); // cr�er un block pour remplacer tous les zones libres dans un seul block qui est n
+    node *n = (node *)malloc(sizeof(node) ); // creer un block pour remplacer tous les zones libres dans un seul block qui est n
 
     n->next = NULL;
     n->type = 'L';
@@ -126,7 +126,7 @@ void compactage()  /// naaaaadi  10/10
     Previous = Current;
     if(Current->next != NULL)
     {
-        while(Current != NULL) // pour �liminer les blocs des zones libres et les remplacer tous dans un seul block
+        while(Current != NULL) // pour eliminer les blocs des zones libres et les remplacer tous dans un seul block
         {
             if(Current->type == 'L')
             {
@@ -160,7 +160,7 @@ void compactage()  /// naaaaadi  10/10
         else
         {
             Previous->next = n;
-            n->taille = taille; // apr�s avoir supprimer les zones libres et compter leur taille
+            n->taille = taille; // apres avoir supprimer les zones libres et compter leur taille
         }
     }
 
@@ -172,7 +172,7 @@ void afficherHead()
 
     temp1 = head;
     printf(" --------------- \n");
-    while(temp1 != NULL) /// d�cr�menter le temps d'execution des processus
+    while(temp1 != NULL) /// decrementer le temps d'execution des processus
     {
         if(temp1->type == 'O')
         {
@@ -211,7 +211,7 @@ void afficherFL()
     if(fl!=NULL)
     {
         printf("\n FILE D'ATTENTE : \n ^^^^^^^^^^^^^^ \n --------------- \n");
-        while(temp1 != NULL) // d�cr�menter le temps d'execution des processus
+        while(temp1 != NULL) // decrementer le temps d'execution des processus
         {
             printf("|\tP%d\t|    ->\ttaille : %d\t-> cpt : %ds\t-> dtv : %ds\t-> type : %c", temp1->nbr , temp1->taille , temp1->cpt , temp1->dtv , temp1->type);
             if(temp1->next!=NULL) printf("\t-> next->taille : %d\n",temp1->next->taille); else printf("\n");
@@ -230,7 +230,7 @@ void afficherLSD()
     if(lsd!=NULL)
     {
         printf("\n LISTE D'ARRIVEE : \n\n --------------- \n");
-        while(temp1 != NULL) // d�cr�menter le temps d'execution des processus
+        while(temp1 != NULL) // decrementer le temps d'execution des processus
         {
             printf("|\tP%d\t|    ->\ttaille : %d\t-> cpt : %ds\t-> dtv : %ds\t-> type : %c", temp1->nbr , temp1->taille , temp1->cpt , temp1->dtv , temp1->type);
             if(temp1->next!=NULL) printf("\t-> next->taille : %d\n",temp1->next->taille); else printf("\n");
@@ -284,7 +284,7 @@ int calculerTailleTotalBlockLibre()
                 return head->taille;
             }
         }
-        while(temp != NULL) // d�cr�menter le temps d'execution des processus
+        while(temp != NULL) // decrementer le temps d'execution des processus
         {
             if(temp->type=='L')
             {
@@ -544,7 +544,7 @@ void firstfit(int dtvmax)
         /*
                 #########################################################################################################################
 
-            #############  Ajouter Les Processus De Liste D'Arrivee � La Memoire  ###################################################
+            #############  Ajouter Les Processus De Liste D'Arrivee a La Memoire  ###################################################
 
         #########################################################################################################################
 
@@ -560,7 +560,7 @@ void firstfit(int dtvmax)
                 Previous_Head = Current_Head;
 
                 jhead=0;
-                if(fl==NULL)  // si nous avons un processus qui va lib�rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arriv�e et l'autre dans la file d'attente, donc ici la priorit� pour la file d'attente
+                if(fl==NULL)  // si nous avons un processus qui va liberer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivee et l'autre dans la file d'attente, donc ici la priorite pour la file d'attente
                 {
                     while(Current_Head!=NULL && jhead==0) //  chercher une place dans La memoir libre
                     {
@@ -711,7 +711,7 @@ void firstfit(int dtvmax)
                 if(Current_Head->type == 'L')
                 {
                     // Calculer la taille totale de tous les blocs libres lorsque nous recherchons la taille du processus
-                    // si nous n'avons pas trouv� la taille du processus qu'on cherche on passe au compactage et on verifier s'il est possible ( taille_total <= Current_FL->taille )
+                    // si nous n'avons pas trouve la taille du processus qu'on cherche on passe au compactage et on verifier s'il est possible ( taille_total <= Current_FL->taille )
 
                     if(Current_FL->taille <= Current_Head->taille)
                     {
@@ -856,7 +856,7 @@ void BestFit(int dtvmax)
 
                 pos = BestPosition(Current_LSD->taille);
 
-                if(fl==NULL) // si nous avons un processus qui va lib�rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arriv�e et l'autre dans la file d'attente, donc ici la priorit� pour la file d'attente
+                if(fl==NULL) // si nous avons un processus qui va liberer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivee et l'autre dans la file d'attente, donc ici la priorite pour la file d'attente
                 {
                     for(i=1 ; Current_Head!=NULL && jhead==0 && pos!=0 ; i++)
                     {
@@ -1135,7 +1135,7 @@ void WorstFit(int dtvmax)
 
                 pos = WorstPosition(Current_LSD->taille);
 
-                if(fl==NULL) // si nous avons un processus qui va lib�rer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arriv�e et l'autre dans la file d'attente, donc ici la priorit� pour la file d'attente
+                if(fl==NULL) // si nous avons un processus qui va liberer sa place et qu'il y a deux processus qui vont prendre sa place, un dans la liste d'arrivee et l'autre dans la file d'attente, donc ici la priorite pour la file d'attente
                 {
                     for(i=1 ; Current_Head!=NULL && jhead==0 && pos!=0 ; i++)
                     {
