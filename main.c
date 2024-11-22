@@ -348,6 +348,7 @@ int saisieLesProcessusDansLaListe(int nbrProcessus)
 
     }
 
+    system("@cls||clear");
     afficherLSD();
 
     return dtvmax;
@@ -1409,8 +1410,8 @@ int main()
 
     do
     {
-        printf("Choisissez un Algo : \n 1 -> FirstFit \n 2 -> BestFit \n 3 -> WorstFit \n");
-        printf("Entrer L'algorithme : " );
+        printf("\t |  Choisissez un Algo : \n\t |- 1 -> FirstFit \n\t |- 2 -> BestFit \n\t |- 3 -> WorstFit \n\t |\n");
+        printf("\t |-----> Entrer L'algorithme : " );
         scanf("%d",&algo_choisi);
         printf("\n\n");
     }while(algo_choisi<1 || algo_choisi>3);
@@ -1431,6 +1432,7 @@ int main()
             WorstFit(date_arrivee_max);
             break;
     }
+    getchar();
 
     return 0;
 }
